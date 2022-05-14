@@ -1,8 +1,11 @@
 <template>
-  <div class="drum-pad" :class="{'play': audioItem.on, 'off': !audioItem.on}" @click="handleClick(audioItem.key)">
-    {{audioItem.label}} {{loop}}
-    <audio loop :id="audioItem.key" :ref="`player-${audioItem.key}`" :src="audioItem.file"></audio>
-  </div>
+    <div>
+        <div class="drum-pad" :class="{'play': audioItem.on, 'off': !audioItem.on}" @click="handleClick(audioItem.key)">
+            <div>{{audioItem.label}}</div>
+            <audio loop :id="audioItem.key" :ref="`player-${audioItem.key}`" :src="audioItem.file"></audio>
+            <div>loop: {{loop}} s</div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -13,9 +16,6 @@ export default {
         return {
             active: 0,
         }
-    },
-    mounted () {
-        //this.startTimer();
     },
     unmounted () {
         this.stopTimer();
@@ -87,6 +87,30 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    .drum-pad {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 5px;
+        border: 1px solid grey;
+        background-color: grey;
+        cursor: pointer;
+        border-radius: 10%;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+    }
 
+    .play {
+        background-color: #90EE90;
+        color: #2c3e50;
+    }
+
+    .off {
+        background-color: grey;
+    }
 </style>

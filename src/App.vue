@@ -3,7 +3,6 @@
 </template>
 
 <script>
-//import {mapState, mapActions} from 'vuex';
 
 export default {
   data() {
@@ -12,40 +11,30 @@ export default {
     }
   },
   components: {
-    
   },
   created() {
-    
   },
-  methods: {
-    //...mapActions(['GET_INVOICES']),
-    
+  methods: {  
   },
   computed: {
-    //...mapState(['invoiceModal', 'confirmModalActive', 'invoicesLoaded'])
   }
 }
 </script>
 
 <style lang="scss">
+body {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
+  display: flex;
+  background: linear-gradient(90deg, rgba(255,214,142,1) 0%, rgba(254,183,70,1) 35%, rgba(249,149,7,0.6446953781512605) 100%);
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

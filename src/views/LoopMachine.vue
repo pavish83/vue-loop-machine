@@ -1,15 +1,15 @@
 <template>
   <div class="loop-machine">
+    <div class="app-header">LOOP MACHINE</div>
     <LoopSwitch></LoopSwitch>
     <PadComponent></PadComponent>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
 import PadComponent from '@/components/PadComponent.vue'
 import LoopSwitch from '@/components/LoopSwitch.vue'
-//import {mapMutations, mapState} from 'vuex';
 
 export default {
   name: "LoopMachine",
@@ -23,22 +23,30 @@ export default {
     LoopSwitch
   },
   methods: {
-    //...mapMutations(['TOGGLE_INVOICE']),
   },
   computed: {
-    //...mapState(['invoiceData']),
   }
 };
 </script>
 
 <style lang="scss" scoped>
+  .app-header {
+    margin-bottom: 28px;
+    font-size: 20px;
+    font-weight: bold;
+  }
   .loop-machine {
-    height: 100%;
-    padding: 0;
-    margin: 30% auto;
+    margin: 15% 20%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-color: lightgrey;
+    box-shadow: 5px 5px 8px 3px grey;
+    @media screen and (max-width: 700px) {
+      margin: 0;
+    }
   }
+  
 </style>
