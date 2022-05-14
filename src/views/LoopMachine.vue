@@ -36,7 +36,7 @@ export default {
     font-weight: bold;
   }
   .loop-machine {
-    margin: 15% 20%;
+    margin: 10% 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
