@@ -11,6 +11,7 @@ import {mapState} from 'vuex';
 import PadItem from '@/components/PadItem';
 
 export default {
+  name: 'pad-list',
   data() {
     return {
 

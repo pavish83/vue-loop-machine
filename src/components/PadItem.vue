@@ -1,9 +1,12 @@
 <template>
     <div>
         <div class="drum-pad" :class="{'play': audioItem.on, 'off': !audioItem.on}" @click="handleClick(audioItem.key)">
-            <div>{{audioItem.label}}</div>
+            <div class="audio-label">{{audioItem.label}}</div>
             <audio loop :id="audioItem.key" :ref="`player-${audioItem.key}`" :src="audioItem.file"></audio>
             <div>loop: {{loop}} s</div>
+            <div class="bar" v-if="showProgress">
+                <div class="in"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -11,14 +14,13 @@
 <script>
 import {mapState, mapMutations} from 'vuex';
 export default {
+    name: 'pad-item',
     props: ['audioItem'],
     data () {
         return {
             active: 0,
+            showProgress: false
         }
-    },
-    unmounted () {
-        this.stopTimer();
     },
     methods: {
         ...mapMutations(['TOGGLE_PAD_CUE', 'TOGGLE_PAD_ON']),
@@ -63,6 +65,9 @@ export default {
             return this.active;
         }
     },
+    unmounted () {
+        this.stopTimer();
+    },
     watch: {
         loop: {
             handler() {
@@ -74,10 +79,12 @@ export default {
         },
         loopSwitchOn() {
             if(!this.loopSwitchOn) {
+                this.showProgress = false;
                 this.stop();
                 this.stopTimer();
             } else {
                 this.startTimer();
+                this.showProgress = true;
                 if(this.audioItem.on) {
                     this.play();
                 }
@@ -93,16 +100,19 @@ export default {
         height: 100px;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         align-items: center;
         margin: 5px;
-        border: 1px solid grey;
-        background-color: grey;
+        border: 1px solid #808080;
+        background-color: #808080;
         cursor: pointer;
         border-radius: 10%;
         font-size: 12px;
         font-weight: bold;
         color: #fff;
+    }
+
+    .audio-label {
+        padding: 15px 0;
     }
 
     .play {
@@ -111,6 +121,36 @@ export default {
     }
 
     .off {
-        background-color: grey;
+        background-color: #808080;
+    }
+    .bar {
+        border: 1px solid #666;
+        height: 5px;
+        width: 70%;
+        margin-top: 15px;
+        .in {
+            animation: fill 8s infinite;
+            animation-timing-function: linear;
+            height: 100%;
+            background-color: #0000FF;
+        }
+    }
+
+    @keyframes fill {
+        0% {
+            width: 0%;
+        }
+        25% {
+            width: 25%;
+        }
+        50% {
+            width: 50%;
+        }
+        75% {
+            width: 75%;
+        }
+        100% {
+            width: 100%;
+        }
     }
 </style>

@@ -12,6 +12,7 @@
 <script>
 import {mapState, mapMutations} from 'vuex';
 export default {
+    name: 'loop-switch',
     methods: {
         ...mapMutations(['TOGGLE_LOOP_SWITCH']),
         handleClick() {
@@ -76,11 +77,11 @@ export default {
     input:checked + .slider:before
     {
         transform: translateX(4px);
-        background-color: limeGreen;
+        background-color: #32CD32;
     }
 
     input:checked + .slider
     {
-        box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;
+        box-shadow: 0 0 0 2px #32CD32, 0 0 8px #32CD32;
     }
 </style>

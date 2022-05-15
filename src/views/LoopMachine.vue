@@ -2,13 +2,13 @@
   <div class="loop-machine">
     <div class="app-header">LOOP MACHINE</div>
     <LoopSwitch></LoopSwitch>
-    <PadComponent></PadComponent>
+    <PadList></PadList>
   </div>
 </template>
 
 <script>
 
-import PadComponent from '@/components/PadComponent.vue'
+import PadList from '@/components/PadList.vue'
 import LoopSwitch from '@/components/LoopSwitch.vue'
 
 export default {
@@ -19,7 +19,7 @@ export default {
     }
   },
   components: {
-    PadComponent,
+    PadList,
     LoopSwitch
   },
   methods: {
@@ -42,8 +42,8 @@ export default {
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: lightgrey;
-    box-shadow: 5px 5px 8px 3px grey;
+    background-color: #D3D3D3;
+    box-shadow: 5px 5px 8px 3px #808080;
     @media screen and (max-width: 700px) {
       margin: 0;
     }
